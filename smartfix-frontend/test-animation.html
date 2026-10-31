@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-Second Animation Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f3f4f6;
+            margin: 0;
+        }
+        
+        .container {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.25rem;
+            margin: 2rem 0;
+        }
+
+        .loading-dots .dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            animation: bounce 4s infinite ease-in-out both;
+        }
+
+        .loading-dots .dot:nth-child(1) {
+            animation-delay: -0.92s;
+        }
+
+        .loading-dots .dot:nth-child(2) {
+            animation-delay: -0.46s;
+        }
+
+        .loading-dots .dot:nth-child(3) {
+            animation-delay: 0s;
+        }
+
+        @keyframes bounce {
+            0%, 75%, 100% {
+                transform: scale(0.3);
+                opacity: 0.5;
+            }
+            37.5% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+        
+        .timer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin: 1rem 0;
+        }
+        
+        .cycle-counter {
+            font-size: 1rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>4-Second Animation Test</h1>
+        <p>Watch the dots complete one full cycle every 4 seconds</p>
+        
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        
+        <div class="timer" id="timer">0.0s</div>
+        <div class="cycle-counter" id="cycles">Cycles: 0</div>
+        
+        <div style="margin-top: 2rem; padding: 1rem; background: #fef3c7; border-radius: 4px;">
+            <strong>Expected Behavior:</strong><br>
+            • Each dot should grow and shrink once every 4 seconds<br>
+            • Dots should be staggered (not all bounce at same time)<br>
+            • Animation should feel slower and more deliberate
+        </div>
+    </div>
+
+    <script>
+        let seconds = 0;
+        let cycles = 0;
+        
+        setInterval(() => {
+            seconds += 0.1;
+            cycles = Math.floor(seconds / 4);
+            document.getElementById('timer').textContent = seconds.toFixed(1) + 's';
+            document.getElementById('cycles').textContent = 'Cycles: ' + cycles;
+        }, 100);
+    </script>
+</body>
+</html>

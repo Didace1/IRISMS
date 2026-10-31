@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .typewriter {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: #333;
+            min-height: 1.2em;
+            border-right: 2px solid #333;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #333; }
+        }
+        
+        .result-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2563eb;
+            margin: 10px 0;
+        }
+        
+        .speed-control {
+            margin: 20px 0;
+            padding: 10px;
+            background: #f3f4f6;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Typewriter Effect Demo</h1>
+    
+    <div class="demo-section">
+        <h2>AI Diagnosis Results - Typewriter Effect</h2>
+        
+        <div class="result-text">
+            Primary Fault: <span class="typewriter">Software issue</span>
+        </div>
+        
+        <div class="result-text">
+            Description: <span class="typewriter">Likely issue detected: Software issue</span>
+        </div>
+        
+        <div class="result-text">
+            Confidence: <span class="typewriter">85%</span>
+        </div>
+        
+        <div class="speed-control">
+            <label>Typing Speed: 
+                <input type="range" min="10" max="100" value="30" id="speed" />
+                <span id="speedValue">30 chars/sec</span>
+            </label>
+        </div>
+    </div>
+    
+    <script>
+        const speedSlider = document.getElementById('speed');
+        const speedValue = document.getElementById('speedValue');
+        
+        speedSlider.addEventListener('input', (e) => {
+            const speed = e.target.value;
+            speedValue.textContent = speed + ' chars/sec';
+            
+            // Update all typewriter elements
+            const typewriters = document.querySelectorAll('.typewriter');
+            typewriters.forEach(typewriter => {
+                typewriter.style.animationDuration = (100 / speed) + 's';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Node.js
+node_modules/
+dist/
+build/
+
+# Java / Maven
+target/
+*.class
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local configuration
+application-local.properties

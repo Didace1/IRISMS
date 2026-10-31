@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .loading-dots-fault-diagnosis {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.25rem;
+            margin: 20px 0;
+        }
+
+        .loading-dots-fault-diagnosis .dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            animation: bounce 4s infinite ease-in-out both;
+        }
+
+        .loading-dots-fault-diagnosis .dot:nth-child(1) {
+            animation-delay: -2.66s;
+        }
+
+        .loading-dots-fault-diagnosis .dot:nth-child(2) {
+            animation-delay: -1.33s;
+        }
+
+        .loading-dots-fault-diagnosis .dot:nth-child(3) {
+            animation-delay: 0s;
+        }
+
+        @keyframes bounce {
+            0% { transform: scale(0.3); opacity: 0.3; }
+            25% { transform: scale(1.2); opacity: 1; }
+            50% { transform: scale(0.3); opacity: 0.3; }
+            75% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.3); opacity: 0.3; }
+        }
+        
+        .timer {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+        
+        .debug {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        
+        .issue {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>4-Second Animation Troubleshooting</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Pure CSS Animation</h2>
+        <div class="loading-dots-fault-diagnosis">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="timer" id="timer">0.0s</div>
+        
+        <div class="debug">
+            <strong>CSS Applied:</strong><br>
+            animation: bounce 4s infinite ease-in-out both;<br>
+            animation-delay: -2.66s, -1.33s, 0s;<br>
+            width: 0.75rem; height: 0.75rem;
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: Slower Animation (8 seconds)</h2>
+        <div id="slow-test">
+            <div class="dot" style="animation: bounce 8s infinite; animation-delay: -5.32s;"></div>
+            <div class="dot" style="animation: bounce 8s infinite; animation-delay: -2.66s;"></div>
+            <div class="dot" style="animation: bounce 8s infinite; animation-delay: 0s;"></div>
+        </div>
+        
+        <div class="debug">
+            If this works but 4s doesn't, browser might have minimum animation time
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: Very Obvious Animation</h2>
+        <div id="obvious-test">
+            <div class="dot" style="animation: obvious 4s infinite;"></div>
+            <div class="dot" style="animation: obvious 4s infinite; animation-delay: 1.33s;"></div>
+            <div class="dot" style="animation: obvious 4s infinite; animation-delay: 2.66s;"></div>
+        </div>
+        
+        <div class="debug">
+            Testing with completely different animation
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Possible Issues & Solutions</h2>
+        
+        <div class="issue">
+            <strong>Issue 1: Browser Cache</strong><br>
+            Solution: Hard refresh (Ctrl+F5) or open in incognito mode
+        </div>
+        
+        <div class="issue">
+            <strong>Issue 2: CSS Not Loading</strong><br>
+            Solution: Check browser dev tools for CSS errors
+        </div>
+        
+        <div class="issue">
+            <strong>Issue 3: React Component Not Updated</strong><br>
+            Solution: Check if useFaultDiagnosisTiming={true} is applied
+        </div>
+        
+        <div class="issue">
+            <strong>Issue 4: Animation Too Subtle</strong><br>
+            Solution: Try more obvious animation (see Test 3)
+        </div>
+    </div>
+    
+    <style>
+        @keyframes obvious {
+            0%, 100% { 
+                transform: scale(0.1); 
+                background: red; 
+            }
+            50% { 
+                transform: scale(2); 
+                background: blue; 
+            }
+        }
+    </style>
+    
+    <script>
+        let seconds = 0;
+        setInterval(() => {
+            seconds += 0.1;
+            document.getElementById('timer').textContent = seconds.toFixed(1) + 's';
+        }, 100);
+    </script>
+</body>
+</html>

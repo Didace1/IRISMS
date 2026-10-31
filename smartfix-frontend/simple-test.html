@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .dot {
+            width: 20px;
+            height: 20px;
+            background: blue;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 10px;
+        }
+        
+        .dot1 {
+            animation: bounce 4s infinite;
+        }
+        
+        .dot2 {
+            animation: bounce 4s infinite;
+            animation-delay: 1.33s;
+        }
+        
+        .dot3 {
+            animation: bounce 4s infinite;
+            animation-delay: 2.66s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(0.5); }
+            50% { transform: scale(1.5); }
+        }
+        
+        .timer {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple 4-Second Test</h1>
+    <div class="timer" id="timer">0.0s</div>
+    
+    <div>
+        <span class="dot dot1"></span>
+        <span class="dot dot2"></span>
+        <span class="dot dot3"></span>
+    </div>
+    
+    <p>Each dot should bounce once every 4 seconds, staggered by 1.33 seconds</p>
+    
+    <script>
+        let seconds = 0;
+        setInterval(() => {
+            seconds += 0.1;
+            document.getElementById('timer').textContent = seconds.toFixed(1) + 's';
+        }, 100);
+    </script>
+</body>
+</html>

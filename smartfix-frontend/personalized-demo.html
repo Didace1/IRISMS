@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .greeting {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .typewriter {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #333;
+            min-height: 1.2em;
+            border-right: 2px solid #333;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #333; }
+        }
+        
+        .result-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personalized AI Response Demo</h1>
+    
+    <div class="demo-section">
+        <h2>When Sarah logs in and describes her laptop issue:</h2>
+        
+        <div class="greeting">
+            <div class="typewriter">Yes Sarah, I can see your device is experiencing Software issue. Based on your description about 'laptop is very slow and takes forever to open programs', I've analyzed the patterns and this appears to be a moderate severity issue that typically affects the system. The confidence level is 75.0%, so I recommend checking the Operating system first.</div>
+        </div>
+        
+        <div class="result-box">
+            <h3>AI Response Details:</h3>
+            <ul>
+                <li><strong>Personalized Greeting:</strong> Addresses Sarah by name</li>
+                <li><strong>Symptom Analysis:</strong> Analyzes her specific description</li>
+                <li><strong>Contextual Response:</strong> Provides relevant recommendations based on her issue</li>
+                <li><strong>Confidence-Based Advice:</strong> Adjusts recommendations based on confidence level</li>
+                <li><strong>Typewriter Effect:</strong> Types out the greeting character by character</li>
+            </ul>
+        </div>
+        
+        <div class="result-box">
+            <h3>Example Responses:</h3>
+            
+            <h4>Valid Input Example:</h4>
+            <div class="typewriter">Yes Sarah, I can see your device is experiencing Software issue. Based on your description about 'laptop keeps shutting down randomly', I've analyzed the patterns and this appears to be a high severity issue that typically affects the power system. The confidence level is 85.0%, so I recommend checking the Power supply and Motherboard first.</div>
+            
+            <h4>Invalid Input Example:</h4>
+            <div class="typewriter">Yes Sarah, I notice you mentioned 'asdfghjkl'. It seems like there might be some unclear information. Could you provide more specific details about what's happening, when it started, and any error messages you're seeing?</div>
+        </div>
+    </div>
+    
+    <script>
+        // Simulate typewriter effect
+        const typewriters = document.querySelectorAll('.typewriter');
+        typewriters.forEach(typewriter => {
+            const text = typewriter.textContent;
+            typewriter.textContent = '';
+            let charIndex = 0;
+            
+            const typeChar = () => {
+                if (charIndex < text.length) {
+                    typewriter.textContent += text[charIndex];
+                    charIndex++;
+                    setTimeout(typeChar, 50);
+                } else {
+                    // Remove cursor when done
+                    typewriter.style.borderRight = 'none';
+                }
+            };
+            
+            typeChar();
+        });
+    </script>
+</body>
+</html>

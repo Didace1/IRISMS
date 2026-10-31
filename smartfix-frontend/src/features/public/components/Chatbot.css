@@ -1,0 +1,113 @@
+/* Chatbot specific styles */
+.chatbot-message-animation {
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chatbot-typing-indicator {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Custom scrollbar for chat messages */
+.chatbot-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+  background: #c0392b;
+  border-radius: 2px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb:hover {
+  background: #a93226;
+}
+
+/* Smooth transitions */
+.chatbot-button-hover {
+  transition: all 0.2s ease-in-out;
+}
+
+.chatbot-button-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
+}
+
+/* Message bubble animations */
+.chatbot-message-enter {
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Suggestion button hover effects */
+.chatbot-suggestion {
+  transition: all 0.2s ease-in-out;
+}
+
+.chatbot-suggestion:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(192, 57, 43, 0.2);
+}
+
+/* Chat window entrance animation */
+.chatbot-window-enter {
+  animation: chatWindowSlideIn 0.4s ease-out;
+}
+
+@keyframes chatWindowSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Floating button pulse effect */
+.chatbot-float-button {
+  animation: floatPulse 2s ease-in-out infinite;
+}
+
+@keyframes floatPulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(192, 57, 43, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 25px rgba(192, 57, 43, 0.5);
+  }
+}
